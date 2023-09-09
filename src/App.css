@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+}
+
+.graph{
+  float: left;
+  width: 70%;
+  left: 0;
+}
+
+.userPanel{
+  float: right;
+  white-space: pre-line;
+}
+
+.error-box{
+  
+  white-space: pre-line;
+}
+.error-text{
+  color: red;
+  font-style: italic;
+}
+
+.userPanel input{
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+.userPanel input:focus{
+  outline-width: 0;
+}
