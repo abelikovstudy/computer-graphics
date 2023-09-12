@@ -10,7 +10,7 @@ const options = [
 
 const Graph = forwardRef((props, ref) => {
   return(
-    <canvas ref={ref} width="1000" height="1000" style={{ border: "5px"}} >
+    <canvas ref={ref} width="1920" height="1080" style={{ border: "5px"}} className='graph-canvas'>
     </canvas>
   );
 });
@@ -36,6 +36,8 @@ function App() {
   const drawGraph = () => {
     clearGraph()
     const ctx = graphRef.current.getContext("2d")
+    ctx.width = windowSize.width;
+    ctx.height = windowSize.height;
     ctx.strokeStyle = "red";
     ctx.beginPath(); 
     generateFunction(Math.min(start,end),Math.max(start,end),currentFunction).forEach((el) => {
@@ -76,8 +78,8 @@ function App() {
       }
       windowRef.current = setTimeout(() => {
         setWindowSize({
-          width: window.innerWidth / 2,
-          height: window.innerHeight / 2,
+          width: window.innerWidth,
+          height: window.innerHeight,
         });
       }, 500);
     }

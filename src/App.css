@@ -2,13 +2,11 @@
 }
 
 .graph{
-  float: left;
-  width: 70%;
-  left: 0;
+
 }
 
 .userPanel{
-  float: right;
+  float: left;
   white-space: pre-line;
 }
 
@@ -29,4 +27,9 @@
 
 .userPanel input:focus{
   outline-width: 0;
+}
+
+.graph-canvas{
+  background-color: lightblue;
+  
 }
