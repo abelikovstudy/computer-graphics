@@ -30,7 +30,7 @@ function App() {
   const windowRef = useRef()
   const clearGraph = () => {
     const ctx = graphRef.current.getContext("2d")
-    ctx.clearRect(0,0,1000,1000)
+    ctx.clearRect(0,0,windowSize.width * 2,windowSize.height * 2)
     setClearing(!clearing)
   }
   const drawGraph = () => {
@@ -39,7 +39,7 @@ function App() {
     ctx.strokeStyle = "red";
     ctx.beginPath(); 
     generateFunction(Math.min(start,end),Math.max(start,end),currentFunction).forEach((el) => {
-      ctx.lineTo(el.x + 500, el.y  + 500); 
+      ctx.lineTo(el.x + (windowSize.width / 2), el.y  + (windowSize.height / 2)); 
     
     })
     ctx.stroke(); 
@@ -48,14 +48,14 @@ function App() {
     const ctx = graphRef.current.getContext("2d")
     ctx.strokeStyle = "black";
     ctx.beginPath()
-    ctx.moveTo(1000 / 2, 0)
-    ctx.lineTo(1000 / 2, 1000)
+    ctx.moveTo((windowSize.width / 2), 0)
+    ctx.lineTo((windowSize.width / 2), windowSize.height)
 
     ctx.stroke()
 
     ctx.beginPath()
-    ctx.moveTo(0, 1000 / 2)
-    ctx.lineTo(1000, 1000 / 2)
+    ctx.moveTo(0, (windowSize.height / 2))
+    ctx.lineTo(windowSize.width, (windowSize.height / 2))
     ctx.stroke()
   },[clearing])
 
@@ -76,8 +76,8 @@ function App() {
       }
       windowRef.current = setTimeout(() => {
         setWindowSize({
-          width: window.innerWidth,
-          height: window.innerHeight,
+          width: window.innerWidth / 2,
+          height: window.innerHeight / 2,
         });
       }, 500);
     }
@@ -87,7 +87,8 @@ function App() {
   },[])
 
   useEffect(() => {
-    console.table(windowSize)
+    clearGraph()
+    drawGraph()
   },[windowSize])
   return (
     <div className="App">
