@@ -46,7 +46,7 @@ function App() {
     ctx.lineWidth = 2;
     ctx.beginPath(); 
     generateFunction(Math.min(start,end),Math.max(start,end),currentFunction, ctx.width, ctx.height, setOffset).forEach((el) => {
-      ctx.lineTo(el.x + (windowSize.width / 2), el.y   + (windowSize.height / 2)); 
+      ctx.lineTo(el.x, el.y   + (windowSize.height / 2)); 
     
     })
     ctx.stroke();
@@ -56,8 +56,8 @@ function App() {
     const ctx = graphRef.current.getContext("2d")
     ctx.strokeStyle = "black";
     ctx.beginPath()
-    ctx.moveTo((windowSize.width / 2) + offset.x, 0)
-    ctx.lineTo((windowSize.width / 2) + offset.x, windowSize.height)
+    ctx.moveTo(offset.x, 0)
+    ctx.lineTo(offset.x, windowSize.height)
 
     ctx.stroke()
 
